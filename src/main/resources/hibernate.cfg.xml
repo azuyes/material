@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://172.18.8.222:3306/material</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
+        <!--<property name="hibernate.connection.autocommit">true</property>-->
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">false</property>
+
+
+        <mapping resource="com/bjut/ssh/entity/Lspass.hbm.xml"/>
+        <mapping class="com.bjut.ssh.entity.Lspass"/>
+        <mapping class="com.bjut.ssh.entity.Lsgnbh"/>
+        <mapping resource="com/bjut/ssh/entity/Lsgnbh.hbm.xml"/>
+        <mapping resource="com/bjut/ssh/entity/Lsusgn.hbm.xml"/>
+        <mapping class="com.bjut.ssh.entity.Lsusgn"/>
+        <mapping resource="com/bjut/ssh/entity/Departmentbase.hbm.xml"/>
+        <mapping class="com.bjut.ssh.entity.Departmentbase"/>
+        <mapping resource="com/bjut/ssh/entity/Materialstockout.hbm.xml"/>
+        <mapping class="com.bjut.ssh.entity.Materialstockout"/>
+        <mapping resource="com/bjut/ssh/entity/Supplier.hbm.xml"/>
+        <mapping class="com.bjut.ssh.entity.Supplier"/>
+        <mapping resource="com/bjut/ssh/entity/Customer.hbm.xml"/>
+        <mapping class="com.bjut.ssh.entity.Customer"/>
+        <mapping class="com.bjut.ssh.entity.Materialclass"/>
+        <mapping resource="com/bjut/ssh/entity/Materialclass.hbm.xml"/>
+        <mapping class="com.bjut.ssh.entity.Materialsset"/>
+        <mapping resource="com/bjut/ssh/entity/Materialsset.hbm.xml"/>
+        <mapping class="com.bjut.ssh.entity.Materialstockin"/>
+        <mapping resource="com/bjut/ssh/entity/Materialstockin.hbm.xml"/>
+        <mapping resource="com/bjut/ssh/entity/Warehouseset.hbm.xml"/>
+        <mapping class="com.bjut.ssh.entity.Warehouseset"/>
+    </session-factory>
+</hibernate-configuration>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Title</title>
+    <!--Jquery EasyUI-->
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/default/easyui.css"/>
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/icon.css"/>
+    <link rel="stylesheet" type="text/css" href="../../CSS/table.css"/>
+    <script type="text/javascript" src="../../JavaScript/jquery.min.js"></script>
+    <script type="text/javascript" src="../../JavaScript/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../JavaScript/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../../JavaScript/easyui-validatebox-extend.js"></script>
+    <script type="text/javascript" src = "allocationInbound.js"></script>
+
+
+</head>
+
+
+<body class="easyui-layout">
+    <!-- 此div包含功能栏和表格 -->
+    <div style="position:absolute;height:100%;width:100%;">
+        <!--<%--功能区--%>  -->
+        <div id="tb" style="padding: 5px; height: auto">
+            <a id="btnSearch" href="###"class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="alert('查询按钮')">查询</a>
+            <a id="btnAdd" href="###"class="easyui-linkbutton" data-options="iconCls:'icon-add'" onclick="showMaterialClassDialog()" >新增</a>
+            <a id="btnSave" href="###"class="easyui-linkbutton" data-options="iconCls:'icon-save'" onclick="endEdit()">提交</a>
+            <div style="width:100%;text-align:center">
+                <span style="font-size: 14pt; text-align: center;color:blue;">XX入库</span>
+            </div>
+
+            <div>
+                <table style="width: 100%; border: 0px ;">
+                    <tr><td colspan ="8">
+                        <table  style="width: 100%;"  border="0">
+                            <!--空白的一行-->
+                            <tr style="height: 25px; width:100%"></tr>
+
+                            <tr style="height: 25px">
+                                <td style="font-size: 10pt; color: #000"><span>XX单位</span></td>
+                                <td style="width:25%"><input name="SupplierUnit" class="easyui-textbox"  type="text" style="height: 20px; " onclick="showCompanyDialog()"/></td>
+
+                                <td style="font-size: 10pt; color: #000"><span>入库日期</span></td>
+                                <td style="width:25%"><input id="currentYear" name="currentYear" type="text"  class="easyui-textbox" style="height: 20px; width:50px;"/> 年 <input id="currentMonth" name="currentMonth" type="text"  class="easyui-textbox" style="height: 20px; width:30px;"/> 月<input id="currentDay" name="currentDay" type="text"  class="easyui-textbox" style="height: 20px; width:30px;"/> 日</td>
+
+                                <td style="font-size: 10pt; color: #000"><span>入库单号</span></td>
+                                <td style="width:25%"><input name="stockIn_ID_Input" type="text" class="easyui-textbox"  style="height: 20px; " /></td>
+                            </tr>
+
+                            <tr style="height: 25px">
+                                <td style="font-size: 10pt; color: #000"><span>合同编号</span></td>
+                                <td><input name="ContractID" type="text" class="easyui-textbox"  style="height: 20px; " /></td>
+
+                                <td style="font-size: 10pt; color: #000">验收日期</td>
+                                <td><input id="ysYear" name="ysYear" type="text"  class="easyui-textbox" style="height: 20px; width:50px;"/> 年 <input id="ysMonth" name="ysMonth" type="text"  class="easyui-textbox" style="height: 20px; width:30px;"/> 月<input id="ysDay" name="ysDay" type="text"  class="easyui-textbox" style="height: 20px; width:30px;"/> 日</td>
+
+                                <td style="font-size: 10pt; color: #000"><span>验收地点</span></td>
+                                <td><input name="select_Warehouse_Input" class="easyui-textbox" type="text" style="height: 20px; " readonly/></td>
+                            </tr>
+                        </table>
+                    </td>
+                    </tr>
+                    <!--空白的一行-->
+                    <tr style="height: 25px; width:100%"></tr>
+                </table>
+            </div>
+
+        </div>
+
+
+        <!--<%--表格显示区--%>-->
+        <table id="grid"  class="easyui-datagrid"  style="position:relative;width: 100%; height: 100%;"
+               idfield="itemid" pagination="false" data-options="iconCls:'icon-save',rownumbers:true,pageSize:5, pageList:[5,10,15,20],method:'get',toolbar:'#tb',striped:true" fitcolumns="true">
+        </table>
+
+    </div>
+
+    <!--<%--对话框显示区--%>-->
+    <div>
+        <div id="dlgmclass" class="easyui-dialog" style="width: 750px; height: 400px; padding: 15px 10px"
+             data-options="closed:true">
+        </div>
+
+        <div id="dlgCompany" class="easyui-dialog" style="width: 750px; height: 400px; padding: 15px 10px"
+             data-options="closed:true">
+        </div>
+
+    </div>
+
+</body>
+</html>

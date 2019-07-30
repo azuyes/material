@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Title</title>
+    <!--Jquery EasyUI-->
+    <link rel="stylesheet" type="text/css" href="../../../CSS/themes/default/easyui.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../CSS/themes/icon.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../CSS/table.css"/>
+    <script type="text/javascript" src="../../../JavaScript/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../JavaScript/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../../JavaScript/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../../../JavaScript/easyui-validatebox-extend.js"></script>
+    <script type="text/javascript" src = "materialClassDialogPage.js"></script>
+
+</head>
+
+
+<body class="easyui-layout">
+    <!-- 此div包含功能栏和表格 -->
+    <div style="position:absolute;height:100%;width:100%;">
+
+        <!--<%--功能区--%>  -->
+        <div id="tb" style="padding: 5px; height: auto">
+            <a href="#" class="easyui-linkbutton" iconCls="icon-back" onclick="obj.upperLevel_click()">上级</a>
+            <a href="#" class="easyui-linkbutton" iconCls="icon-next" onclick="obj.nextLevel_click();">下级</a>
+            <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="obj.showDetail();">对应物资明细</a>
+        </div>
+
+        <!--<%--表格显示区--%>-->
+        <table id="grid"  class="easyui-datagrid"  style="position:relative;width: 100%; height: 100%;"
+               idfield="itemid" pagination="false" data-options="iconCls:'icon-save',rownumbers:true,pageSize:5, pageList:[5,10,15,20],method:'get',toolbar:'#tb',striped:true" fitcolumns="true">
+        </table>
+
+    </div>
+
+    <div id="tb4" style="padding: 5px; height: auto">
+        <a href="#" class="easyui-linkbutton" iconCls="icon-back" onclick="obj.upperLevel_click()">上级</a>
+        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add'" onclick="addMaterial()">添加</a>
+        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-remove'" onclick="deleteData()" data-options="style={}">删除</a>
+        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-edit'" onclick="ShowEditDialog()">修改</a>
+    </div>
+
+    <div>
+        <!--添加物资弹框-->
+<!--        <div id="dlg" class="easyui-dialog" style="width: 750px; height: 400px; padding: 15px 10px"-->
+<!--             data-options="closed:true">-->
+<!--            <form id="fm" method="post" enctype="multipart/form-data">-->
+<!--                <table padding="5" style="border-collapse:separate; border-spacing:0px 10px;">-->
+<!--                    <tr>-->
+<!--                        <td style="text-align-last: justify"><label>物资类别编码</label></td>-->
+<!--                        <td><input id="materialClassId" type="text" name="materialClassId" class="easyui-textbox"/>  </td>-->
+
+<!--                        <td style="text-align-last: justify"><label>物资编号</label></td>-->
+<!--                        <td><input id="materialId" type="text" name="materialId" class="easyui-textbox"/>  </td>-->
+
+<!--                        <td style="text-align-last: justify"><label>物资名称</label></td>-->
+<!--                        <td><input id="materialName" type="text" name="materialName" class="easyui-textbox" data-options=" required:true" missingMessage="物资名称不能为空!"/>  </td>-->
+
+<!--                    </tr>-->
+
+<!--                    <tr>-->
+<!--                        <td style="text-align-last: justify"><label>规格型号</label></td>-->
+<!--                        <td><input id="specification2"  type="text" name="specification2" class="easyui-textbox"   />  </td>-->
+
+<!--                        <td style="text-align-last: justify"><label>计量单位</label></td>-->
+<!--                        <td><input id="measureUnit2" type="text" name="measureUnit2" class="easyui-textbox" />  </td>-->
+
+<!--                        <td style="text-align-last: justify"><label>单价</label></td>-->
+<!--                        <td><input style="text-align-last: auto" id="planPriceUnit" type="text" name="planPriceUnit" class="easyui-textbox" />-->
+<!--                        </td>-->
+<!--                    </tr>-->
+<!--                </table>-->
+<!--            </form>-->
+
+<!--        </div>-->
+
+
+    </div>
+
+</body>
+</html>

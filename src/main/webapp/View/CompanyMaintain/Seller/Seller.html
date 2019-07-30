@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <head>
+        <meta charset="UTF-8">
+        <title>gong</title>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <link rel="stylesheet" type="text/css" href="../../CSS/themes/default/easyui.css"/>
+        <link rel="stylesheet" type="text/css" href="../../CSS/themes/icon.css"/>
+        <link rel="stylesheet" type="text/css" href="../../CSS/table.css"/>
+        <script type="text/javascript" src="../../JavaScript/jquery.min.js"></script>
+        <script type="text/javascript" src="../../JavaScript/jquery.easyui.min.js"></script>
+        <script type="text/javascript" src="../../JavaScript/easyui-lang-zh_CN.js"></script>
+        <script type="text/javascript" src="../../JavaScript/easyui-validatebox-extend.js"></script>
+        <script type="text/javascript" src="../../..//Helper/CommonHelper.js"></script>
+        <script type="text/javascript" src="Seller.js"></script>
+    </head>
+</head>
+<body class="easyui-layout">
+
+<div style="position:relative;height:100%;width:100%;margin-top: 0px">
+    <table id="seller" class="easyui-datagrid" style="margin: 0px" data-options="striped:true,fitColumns:true">
+    </table>
+    <div id="tb" style="padding: 5px; height: auto">
+        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onclick="showAddDialog()">添加</a>
+        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" onclick="showEditDialog()">修改</a>
+        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" onclick="deleteSeller()">删除</a>
+    </div>
+</div>
+
+<div>
+    <!--弹出客户操作框-->
+    <div id="customerDlg" class="easyui-dialog" style="width: 400px; height: auto; padding: 10px 20px"
+         data-options="closed:true,buttons:'#customerDlg-buttons',striped:true,fitColumns:true">
+        <form id="customerFm" method="post">
+            <table padding="5">
+                <tr>
+                    <td style="text-align-last: justify"><label>客户编号:</label></td>
+                    <td><input id="customerId" type="text" name="customerId" class="easyui-textbox" data-options="required:true"
+                               validtype="length[0,6]" missingMessage="部门编号不能为空!" invalidMessage="部门编号不得超过6位数"/></td>
+                </tr>
+                <tr>
+                    <td style="text-align-last: justify"><label>单位名称:</label></td>
+                    <td><input id="companyName" type="text" name="companyName" class="easyui-textbox"
+                               data-options=" required:false" validtype="length[0,100]" missingMessage="部门名称不能为空!"
+                               invalidMessage="名称不得超过100个字符"/></td>
+                </tr>
+                <tr>
+                    <td style="text-align-last: justify"><label>公司地址:</label></td>
+                    <td><input id="address" type="text" name="address" class="easyui-textbox"
+                               data-options=" required:false" validtype="length[0,100]"
+                               invalidMessage="部门属性不得超过100个字符"/>
+                    </td>
+                    <td><input id="function" name="function" type="hidden"></td><!--通过该input获取当前的操作是添加还是修改-->
+                </tr>
+                <tr>
+                    <td style="text-align-last: justify"><label>统一社会信用代码:</label></td>
+                    <td><input id="trustId" type="text" name="trustId" class="easyui-textbox"
+                               data-options=" required:false" validtype="length[0,20]"
+                               invalidMessage="不得超过20个字符"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align-last: justify"><label>开户银行:</label></td>
+                    <td><input id="bankName" type="text" name="bankName" class="easyui-textbox"
+                               data-options=" required:false" validtype="length[0,50]"
+                               invalidMessage="不得超过50个字符"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align-last: justify"><label>银行账号:</label></td>
+                    <td><input id="accountNo" type="text" name="accountNo" class="easyui-textbox"
+                               data-options=" required:false" validtype="length[0,25]"
+                               invalidMessage="不得超过25个字符"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align-last: justify"><label>固定电话:</label></td>
+                    <td><input id="phoneNo" type="text" name="phoneNo" class="easyui-textbox"
+                               data-options=" required:false" validtype="length[0,12]"
+                               invalidMessage="部门编号不得超过12个字符"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align-last: justify"><label>移动电话:</label></td>
+                    <td><input id="mobileNo" type="text" name="mobileNo" class="easyui-textbox"
+                               data-options=" required:false" validtype="length[11,11]"
+                               invalidMessage="请输入11位手机号"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align-last: justify"><label>注册资本:</label></td>
+                    <td><input id="regCapital" type="text" name="regCapital" class="easyui-textbox"
+                               validtype="length[0,8]" invalidMessage="不得超过8位"
+                               data-options=" required:false"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align-last: justify"><label>法定代表人:</label></td>
+                    <td><input id="legalRep" type="text" name="legalRep" class="easyui-textbox"
+                               data-options=" required:false" validtype="length[0,20]"
+                               invalidMessage="不得超过20位"/>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div id="customerDlg-buttons">
+        <a href="#" class="easyui-linkbutton" type="submit" data-options="iconCls:'icon-ok'" onclick="saveData()">保存</a>
+        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" onclick="$('#customerDlg').dialog('close')">关闭</a>
+    </div>
+</div>
+
+</body>
+</html>

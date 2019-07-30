@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <script type="text/javascript" src="../../../../Helper/CommonHelper.js"></script>
+</head>
+<body>
+    <!--物资类别对话框-->
+    <div id="materialSelectDlg" class="easyui-dialog" style="width: 800px; height: auto; padding: 10px 20px" data-options="closed:true,buttons:'#materialSelectDlg-buttons'">
+        <!--顶部标题工具栏-->
+        <table id="materialSelectHead">
+            <tr>
+                <td>
+                    温馨提示: 库房编号选择完毕后，继续进行物资类别编号选择，一直到选择到第三层类别
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-redo'" onclick="saveData()">下一级</a>
+                    <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-undo'" onclick="saveData()">上一级</a>
+                    <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-more'" onclick="saveData()">明细</a>
+                </td>
+            </tr>
+        </table>
+
+        <!--数据表-->
+        <table id="materialSelectGrid"  class="easyui-datagrid"  style="position:relative;width: 100%; height: 100%;"
+               idfield="" pagination="false" data-options="iconCls:'icon-save',rownumbers:true,pageSize:5, pageList:[5,10,15,20],method:'get',toolbar:'#tb',striped:true" fitcolumns="true">
+        </table>
+
+    </div>
+
+    <!--toolbar按钮栏-->
+    <div id="materialSelectDlg-buttons">
+        <a href="#" class="easyui-linkbutton" type="submit" data-options="iconCls:'icon-ok'" onclick="saveData()">保存</a>
+        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" onclick="javascript:$('#materialSelectDlg').dialog('close')">关闭</a>
+    </div>
+
+</body>
+</html>

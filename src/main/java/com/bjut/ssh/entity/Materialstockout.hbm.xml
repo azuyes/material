@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.bjut.ssh.entity.Materialstockout" table="materialstockout" schema="material">
+        <id name="id">
+            <column name="ID" sql-type="varchar(50)" length="50"/>
+        </id>
+        <property name="materialName">
+            <column name="MaterialName" sql-type="varchar(50)" length="50" not-null="true"/>
+        </property>
+        <property name="stockOutId">
+            <column name="StockOutID" sql-type="varchar(12)" length="12" not-null="true"/>
+        </property>
+        <property name="planId">
+            <column name="PlanID" sql-type="varchar(12)" length="12" not-null="true"/>
+        </property>
+        <property name="departmentNo">
+            <column name="DepartmentNo" sql-type="char(9)" length="9" not-null="true"/>
+        </property>
+        <property name="customerNo">
+            <column name="CustomerNo" sql-type="varchar(6)" length="6" not-null="true"/>
+        </property>
+        <property name="materialSpecification">
+            <column name="MaterialSpecification" sql-type="varchar(30)" length="30" not-null="true"/>
+        </property>
+        <property name="measureUnit">
+            <column name="MeasureUnit" sql-type="varchar(10)" length="10" not-null="true"/>
+        </property>
+        <property name="applyQuantity">
+            <column name="ApplyQuantity" sql-type="decimal(16,4)" precision="16" scale="4" not-null="true"/>
+        </property>
+        <property name="factQuantity">
+            <column name="FactQuantity" sql-type="decimal(16,4)" precision="16" scale="4" not-null="true"/>
+        </property>
+        <property name="unitPrice">
+            <column name="UnitPrice" sql-type="float" precision="-1" not-null="true"/>
+        </property>
+        <property name="money">
+            <column name="Money" sql-type="float" precision="-1" not-null="true"/>
+        </property>
+        <property name="upperMoney">
+            <column name="UpperMoney" sql-type="varchar(100)" length="100" not-null="true"/>
+        </property>
+        <property name="userPlace">
+            <column name="UserPlace" sql-type="varchar(100)" length="100" not-null="true"/>
+        </property>
+        <property name="note">
+            <column name="Note" sql-type="varchar(200)" length="200" not-null="true"/>
+        </property>
+        <property name="requisitionUnitPerson">
+            <column name="RequisitionUnitPerson" sql-type="varchar(10)" length="10" not-null="true"/>
+        </property>
+        <property name="authority">
+            <column name="Authority" sql-type="varchar(10)" length="10" not-null="true"/>
+        </property>
+        <property name="llPer">
+            <column name="LLPer" sql-type="varchar(10)" length="10" not-null="true"/>
+        </property>
+        <property name="flPer">
+            <column name="FLPer" sql-type="varchar(10)" length="10" not-null="true"/>
+        </property>
+        <property name="audit">
+            <column name="Audit" sql-type="varchar(50)" length="50" not-null="true"/>
+        </property>
+        <property name="stockOutDate">
+            <column name="StockOutDate" sql-type="date" not-null="true"/>
+        </property>
+        <property name="requisitionDepartmentNo">
+            <column name="RequisitionDepartmentNo" sql-type="varchar(9)" length="9" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

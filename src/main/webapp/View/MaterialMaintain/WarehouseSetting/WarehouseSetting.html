@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/default/easyui.css"/>
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/icon.css"/>
+    <link rel="stylesheet" type="text/css" href="../../CSS/table.css"/>
+    <script type="text/javascript" src="../../JavaScript/jquery.min.js"></script>
+    <script type="text/javascript" src="../../JavaScript/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../JavaScript/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../../JavaScript/easyui-validatebox-extend.js"></script>
+    <script type="text/javascript" src="../../..//Helper/CommonHelper.js"></script>
+    <script type="text/javascript" src="WarehouseSetting.js"></script>
+</head>
+<body class="easyui-layout">
+
+<div style="position:absolute;height:100%;width:100%;margin-top: 0px">
+    <table id="warehouse" class="easyui-datagrid" style="margin: 0px">
+    </table>
+    <div id="tb" style="padding: 5px; height: auto">
+        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onclick="showAddDialog()">添加</a>
+        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" onclick="showEditDialog()">修改</a>
+        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" onclick="deleteWarehouse()">删除</a>
+    </div>
+</div>
+
+<div>
+    <!--弹出操作框-->
+    <div id="dlg" class="easyui-dialog" style="width: 400px; height: auto; padding: 10px 20px"
+         data-options="closed:true,buttons:'#dlg-buttons',striped:true,fitColumns:true">
+        <form id="fm" method="post">
+            <table padding="5">
+                <tr>
+                    <td style="text-align-last: justify"><label>库房编号:</label></td>
+                    <td><input id="warehouseCode" type="text" name="warehouseCode" class="easyui-textbox" data-options="required:true"
+                               validtype="length[0,2]" missingMessage="库房编号不能为空!" invalidMessage="库房编号不得超过2位数"/></td>
+                </tr>
+                <tr>
+                    <td style="text-align-last: justify"><label>部门编号:</label></td>
+                    <td><input id="departmentId" type="text" name="departmentId" class="easyui-textbox"
+                               data-options=" required:false" validtype="length[0,9]"
+                               invalidMessage="部门编号不得超过9个字符"/></td>
+                </tr>
+                <tr>
+                    <td style="text-align-last: justify"><label>库房名称:</label></td>
+                    <td><input id="warehouseName" type="text" name="warehouseName" class="easyui-textbox"
+                               data-options=" required:true" validtype="length[0,20]" missingMessage="库房名称不能为空!"
+                               invalidMessage="名称不得超过20个字符"/>
+                    </td>
+                    <td><input id="function" name="function" type="hidden"></td><!--通过该input获取当前的操作是添加还是修改-->
+                </tr>
+                <tr>
+                    <td style="text-align-last: justify"><label>保管员:</label></td>
+                    <td><input id="guard" type="text" name="guard" class="easyui-textbox"
+                               data-options=" required:false" validtype="length[0,10]" missingMessage="部门名称不能为空!"
+                               invalidMessage="名称不得超过30个字符"/></td>
+                </tr>
+                <tr>
+                    <td style="text-align-last: justify"><label>稽查员:</label></td>
+                    <td><input id="inspector" type="text" name="inspector" class="easyui-textbox"
+                               data-options=" required:false" validtype="length[0,10]"
+                               invalidMessage="不得超过10个字符"/></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div id="dlg-buttons">
+        <a href="#" class="easyui-linkbutton" type="submit" data-options="iconCls:'icon-ok'" onclick="saveData()">保存</a>
+        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" onclick="$('#dlg').dialog('close')">关闭</a>
+    </div>
+</div>
+
+</body>
+</html>

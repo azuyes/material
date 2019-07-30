@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.bjut.ssh.entity.Materialsset" table="materialsset" schema="material">
+        <id name="materialId" column="MaterialID"/>
+        <property name="materialName" column="MaterialName"/>
+        <property name="specification2" column="Specification2"/>
+        <property name="measureUnit2" column="MeasureUnit2"/>
+        <property name="planPriceUnit" column="PlanPrice_Unit"/>
+    </class>
+</hibernate-mapping>

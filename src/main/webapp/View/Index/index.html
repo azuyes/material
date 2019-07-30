@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script type="text/javascript" src="../JavaScript/jquery.min.js"></script>
+    <script type="text/javascript" src="../JavaScript/jquery.easyui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../CSS/themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../CSS/themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../CSS/table.css" />
+    <script type="text/javascript" src="../JavaScript/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../JavaScript/easyui-validatebox-extend.js"></script>
+	<script type="text/javascript" src="index.js"></script>
+    <!--引入CommonHelper-->
+    <script type="text/javascript" src="../../Helper/CommonHelper.js"></script>
+
+</head>
+<body>
+        <!--注释-->
+        <div class="easyui-layout" style="width: 100%; top: 0px; bottom: 2px; position: absolute;">
+            <div id="north" data-options="region:'north'" style="height: 82px;">
+                <!--<div style="height: 50px; background-image: url('../Resourse/BG.png'); background-size: 100% 100%;">-->
+                <div style="height: 50px; background-color: rgb(80,107,220); background-size: 100% 100%;">
+                    <div id="time1" style="text-align: right; font-family: 微软雅黑; font-size: 15px; color: #FFFFFF; vertical-align: bottom; margin-right: 1%"></div>
+                    <div id="ul" style="text-align: right; margin-top: 10px;">
+                    	<a id="Unit" href="#" onclick="login()" style="font-family: 微软雅黑; font-size: 14px; color: #FFFFFF; text-decoration: none"></a>&nbsp;
+                        <a id="User" href="#" onclick="login()" style="font-family: 微软雅黑; font-size: 14px; color: #FFFFFF; text-decoration: none"></a>&nbsp;
+                        <a href="help/help.html" style="font-family: 微软雅黑; font-size: 15px; color: #FFFFFF; text-decoration: none">帮助</a>&nbsp;
+                        <a href="#" style="font-family: 微软雅黑; font-size: 15px; color: #FFFFFF; text-decoration: none" onclick="Exit()">退出</a>&nbsp;
+                    </div>
+                </div>
+                <div id="north_menu" style="height: 30px; background-image: url('../Resourse/Application/background_Catalogue.png'); background-size: 100% 100%; padding-left: 10px;">
+                    <a id="other_module" class="Catalogue" onclick="display('OtherSettings')">设备管理</a>
+                    <a id="userManager_module" class="Catalogue" onclick="display('UserManager')">用户管理</a>
+                </div>
+            </div>
+
+
+            <div id="west_other" class="easyui-layout" style="width: 100%; position: absolute; top: 80px; bottom: 0px;">
+                <div data-options="region:'west',split:true" title="设备管理系统" style="width: 12%; position: relative; min-width: 170px;">
+                    <div class="easyui-accordion" data-options="fit:false,border:false" style="width: 100%; position: relative;">
+
+                        <div id="MaterialPlan" title="物资计划" data-options="iconCls:'icon-set'">
+                            <ul class="ul">
+                                <li id="MaterialPlan1" class="lii" onclick="addTab('#tab3','申请计划录入','../DailyProcessing/assetAdd.html')">申请计划录入
+                                </li>
+                                <li id="MaterialPlan2" class="lii" onclick="addTab('#tab3','申请计划审核','../DailyProcessing/assetReduce.html')">申请计划审核
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <!--<div id="WarehouseInput" title="入库管理" data-options="iconCls:'icon-set'">-->
+                            <!--<ul class="ul">-->
+                                <!--<li id="WarehouseInput1" class="lii" onclick="addTab('#tab3','采购入库','../DailyProcessing/assetAdd.html')">采购入库-->
+                                <!--</li>-->
+                                <!--<li id="WarehouseInput2" class="lii" onclick="addTab('#tab3','资产入库','../DailyProcessing/assetReduce.html')">资产入库-->
+                                <!--</li>-->
+                                <!--&lt;!&ndash;<li id="WarehouseInput3" class="lii" onclick="addTab('#tab3','调拨入库','../DailyProcessing/assetReduce.html')">调拨入库-->
+                                <!--</li>&ndash;&gt;-->
+                                <!--<li id="WarehouseInput3" class="lii" onclick="addTab('#tab3','暂估入库','../DailyProcessing/assetReduce.html')">暂估入库-->
+                                <!--</li>-->
+                            <!--</ul>-->
+                        <!--</div>-->
+
+                        <div id="WarehouseInput" title="入库管理" data-options="iconCls:'icon-set'">
+                            <ul class="ul">
+                                <li id="WarehouseInput1" class="lii" onclick="addTab('#tab3','采购入库','../WarehouseIn/purchaseInbound/purchaseInbound.html')">采购入库
+                                </li>
+                                <li id="WarehouseInput2" class="lii" onclick="addTab('#tab3','资产入库','../WarehouseIn/selfProducedInbound/selfProducedInbound.html')">资产入库
+                                </li>
+                                <li id="WarehouseInput3" class="lii" onclick="addTab('#tab3','暂估入库','../WarehouseIn/provisionalEstimateInbound/provisionalEstimateInbound.html')">暂估入库
+                                </li>
+                                                                <li id="WarehouseIutput3" class="lii" onclick="addTab('#tab3','调拨出库','../WarehouseIn/allocationInbound/allocationInbound.html')">调拨出库
+                                                                </li>
+                            </ul>
+                        </div>
+
+                        <div id="WarehouseOutput" title="出库管理" data-options="iconCls:'icon-set'">
+                            <ul class="ul">
+                                <li id="WarehouseOutput1" class="lii" onclick="addTab('#tab3','领料','../WarehouseOut/Picking/Picking.html')">领料
+                                </li>
+                                <li id="WarehouseOutput2" class="lii" onclick="addTab('#tab3','外销','../DailyProcessing/assetReduce.html')">外销
+                                </li>
+                                <!--<li id="WarehouseOutput3" class="lii" onclick="addTab('#tab3','调拨出库','../DailyProcessing/assetReduce.html')">调拨出库
+                                </li>-->
+                                <li id="WarehouseOutput3" class="lii" onclick="addTab('#tab3','暂估出库','../DailyProcessing/assetReduce.html')">暂估出库
+                                </li>
+                            </ul>
+                        </div>
+
+
+                        <div id="InternalAllocate" title="内部调拨" data-options="iconCls:'icon-set'">
+                            <ul class="ul">
+                                <li id="InternalAllocate1" class="lii" onclick="addTab('#tab3','内部调拨','../DailyProcessing/assetAdd.html')">内部调拨
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div id="WarehouseInputCheck" title="入库复核" data-options="iconCls:'icon-set'">
+                            <ul class="ul">
+                                <li id="WarehouseInputCheck1" class="lii" onclick="addTab('#tab3','采购入库复核','../DailyProcessing/assetAdd.html')">采购入库复核
+                                </li>
+                                <li id="WarehouseInputCheck2" class="lii" onclick="addTab('#tab3','资产入库复核','../DailyProcessing/assetReduce.html')">资产入库复核
+                                </li>
+                                <li id="WarehouseInputCheck3" class="lii" onclick="addTab('#tab3','调拨入库复核','../DailyProcessing/assetReduce.html')">调拨入库复核
+                                </li>
+                                <li id="WarehouseInputCheck4" class="lii" onclick="addTab('#tab3','暂估入库复核','../DailyProcessing/assetReduce.html')">暂估入库复核
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div id="WarehouseOutputCheck" title="出库复核" data-options="iconCls:'icon-set'">
+                            <ul class="ul">
+                                <li id="WarehouseOutputCheck1" class="lii" onclick="addTab('#tab3','领料复核','../DailyProcessing/assetAdd.html')">领料复核
+                                </li>
+                                <li id="WarehouseOutputCheck2" class="lii" onclick="addTab('#tab3','外销复核','../DailyProcessing/assetReduce.html')">外销复核
+                                </li>
+                                <li id="WarehouseOutputCheck3" class="lii" onclick="addTab('#tab3','调拨出库复核','../DailyProcessing/assetReduce.html')">调拨出库复核
+                                </li>
+                                <li id="WarehouseOutputCheck4" class="lii" onclick="addTab('#tab3','暂估出库复核','../DailyProcessing/assetReduce.html')">暂估出库复核
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div id="AccQuery" title="账务查询" data-options="iconCls:'icon-set'">
+                            <ul class="ul">
+                                <li id="AccQuery1" class="lii" onclick="addTab('#tab3','凭证查询','../DailyProcessing/assetAdd.html')">凭证查询
+                                </li>
+                                <li id="AccQuery2" class="lii" onclick="addTab('#tab3','流水账查询','../DailyProcessing/assetReduce.html')">流水账查询
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <div id="MaterialCheck" title="物资盘点" data-options="iconCls:'icon-set'">
+                            <ul class="ul">
+                                <li id="MaterialCheck1" class="lii" onclick="addTab('#tab3','物资盘点','../DailyProcessing/assetAdd.html')">物资盘点
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div id="MaterialStatisticsInquire" title="物资统计查询" data-options="iconCls:'icon-set'">
+                            <ul class="ul">
+                                <li id="MaterialStatisticsInquire1" class="lii" onclick="addTab('#tab3','物资分类统计','../TongJiQuery/dataSummary.html')">物资分类统计
+                                </li>
+                                <li id="MaterialStatisticsInquire2" class="lii" onclick="addTab('#tab3','物资明细总查询','../TongJiQuery/assetDetailQuery.html')">物资明细总查询
+                                </li>
+                                <li id="MaterialStatisticsInquire3" class="lii" onclick="addTab('#tab3','物资明细总表查询检索','../TongJiQuery/subtotalQuery.html')">物资明细总表查询检索
+                                </li>
+                                <li id="MaterialStatisticsInquire4" class="lii" onclick="addTab('#tab3','分类汇总检索查询','../TongJiQuery/departDepreciationQuery.html')">分类汇总检索查询
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <div id="MaterialMaintain" title="物资维护" data-options="iconCls:'icon-set'">
+                            <ul class="ul">
+                                <li id="MaterialMaintain1" class="lii" onclick="addTab('#tab3','库房设置','../MaterialMaintain/WarehouseSetting/WarehouseSetting.html')">库房设置
+                                </li>
+                                <li id="MaterialMaintain2" class="lii" onclick="addTab('#tab3','物资类别设置（总）','../MaterialMaintain/MaterialClassSettingAll/MaterialClassSettingAll.html')">物资类别设置（总）
+                                </li>
+                                <li id="MaterialMaintain3" class="lii" onclick="addTab('#tab3','物资设置（总）','../MaterialMaintain/MaterialSettingAll/MaterialSettingAll.html')">物资设置（总）
+                                </li>
+                                <li id="MaterialMaintain4" class="lii" onclick="addTab('#tab3','物资类别设置','../TongJiQuery/departDepreciationQuery.html')">物资类别设置
+                                </li>
+                                <li id="MaterialMaintain5" class="lii" onclick="addTab('#tab3','物资设置','../TongJiQuery/dataSummary.html')">物资设置
+                                </li>
+                                <li id="MaterialMaintain6" class="lii" onclick="addTab('#tab3','单据设置','../TongJiQuery/assetDetailQuery.html')">单据设置
+                                </li>
+                                <li id="MaterialMaintain7" class="lii" onclick="addTab('#tab3','库房明细初始化','../TongJiQuery/subtotalQuery.html')">库房明细初始化
+                                </li>
+                                <li id="MaterialMaintain8" class="lii" onclick="addTab('#tab3','物资总表初始化','../TongJiQuery/departDepreciationQuery.html')">物资总表初始化
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <div id="DepartmentMaintain" title="单位维护" data-options="iconCls:'icon-set'">
+                            <ul class="ul">
+                                <li id="DepartmentMaintain1" class="lii" onclick="addTab('#tab3','核算部门设置','../CompanyMaintain/AccountingDepartmentSetting/AccountingDepartmentSetting.html')">核算部门设置
+                                </li>
+                                <li id="DepartmentMaintain2" class="lii" onclick="addTab('#tab3','供应商','../CompanyMaintain/Supplier/Supplier.html')">供应商
+                                </li>
+                                <li id="DepartmentMaintain3" class="lii" onclick="addTab('#tab3','销售商','../CompanyMaintain/Seller/Seller.html')">销售商
+                                </li>
+                                <!--                                <li id="DepartmentMaintain4" class="lii" onclick="addTab('#tab3','领料单位','../TongJiQuery/departDepreciationQuery.html')">领料单位-->
+                                <!--                                </li>-->
+
+                            </ul>
+                        </div>
+
+
+                        <div id="OtherFunctions" title="其他功能" data-options="iconCls:'icon-set'">
+                            <ul class="ul">
+                                <li id="OtherFunctions1" class="lii" onclick="addTab('#tab3','月度结转','../OtherFunction/monthlySummary.html')">月度结转
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div data-options="region:'center'" style="width: 88%; height: 100%;">
+                    <div id="tab3" class="easyui-tabs" style="width: 100%; border-bottom-width: 0px; height: 100%;">
+                    </div>
+                </div>
+            </div>
+
+            <div id="west_userManager" class="easyui-layout" style="width: 100%; position: absolute; top: 80px; bottom: 0px;">
+                <div id="UserManager" data-options="region:'west',split:true" title="设备管理系统" style="width: 12%; position: relative; min-width: 170px;">
+                    <div class="easyui-accordion" data-options="fit:false,border:false" style="width: 100%; position: relative;">
+
+                        <div id="user_management" title="超级用户管理" data-options="iconCls:'icon-set'">
+                            <ul class="ul">
+                                <li id="UserManagement" class="lii" onclick="addTab('#tab2','用户管理','../UserManagement/UserManagement.html')">用户管理
+                                </li>
+                            </ul>
+                            <ul class="ul">
+                                <li id="PublicParameter" class="lii" onclick="addTab('#tab2','公共参数管理','../PublicParameter/publicParameter.html')">公共参数管理
+                                </li>
+                            </ul>
+                            <ul class="ul">
+                                <li id="DataBackUp" class="lii" onclick="addTab('#tab2','数据备份','../DataBackUp/DataBak.html')">数据备份
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-options="region:'center'" style="width: 88%; height: 100%;">
+                    <div id="tab2" class="easyui-tabs" style="width: 100%; border-bottom-width: 0px; height: 100%;">
+                    </div>
+                </div>
+            </div>
+
+            <input id="Hidden_FinanceDate" type="hidden" />
+        </div>
+        <div>
+            <!-- 弹出修改操作框 -->
+            <div id="dlg" class="easyui-dialog" style="width: 500px; height: auto; padding: 10px 20px"
+                data-options="closed:true,buttons:'#dlg-buttons'">
+
+                <form id="fm" method="post">
+                    <table padding="5">
+                        <tr>
+                            <td style="text-align-last: justify">
+                                <label>用户编号：</label>
+                            </td>
+                            <td>
+                                <input id="Test1" name="test" type="hidden"/>
+                                <input id="userNo" name="userNo" class="easyui-validatebox" data-options="required:true" validtype="numberOfDigits[4,4]" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align-last: justify">
+                                <label>新用户名：</label>
+                            </td>
+                            <td>
+                                <input id="userName" name="userName" class="easyui-validatebox" data-options="required:true" validtype="length[1,10],loginName" invalidmessage="有效长度为1-10" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align-last: justify">
+                                <label>新密码：</label>
+                            </td>
+                            <td>
+                                <input id="userPass" name="userPass" class="easyui-validatebox" data-options="required:true" validtype="length[6,6]" invalidmessage="有效长度为6" />
+                            </td>
+                        </tr>
+                         <tr>
+                            <td style="text-align-last: justify">
+                                <label>再输一次密码：</label>
+                            </td>
+                            <td>
+                                <input id="userPass1" name="userPass1" class="easyui-validatebox" data-options="required:true" validtype="equalTo[userPass]"  />
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+
+            <!-- 弹出验证操作框 -->
+            <div id="verify" class="easyui-dialog" style="width: 400px; height: auto; padding: 10px 20px" data-options="closed:true ,buttons:'#verify-buttons'"  >
+                <form id="fm_verify" method="post">
+                <table padding="5">
+                    <tr>
+                        <td style="text-align-last: justify">
+                            <label>用户编号：</label>
+                        </td>
+                        <td>
+                            <input id="userNo_verify" name="userNo" class="easyui-validatebox" data-options="required:true"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align-last: justify">
+                            <label>用户密码：</label>
+                        </td>
+                        <td>
+                            <input id="userPass_verify" name="userPass" class="easyui-validatebox" data-options="required:true" validtype="length[6,6]" invalidmessage="有效长度为6"/>
+                        </td>
+                    </tr>
+                </table>
+                    <br />
+                    <div >
+                        <label id="showInfo"  style="text-align:center;display:none;color:Red; height: 30px; width: 150px;margin-left:100px;"></label>
+                    </div>
+                </form>
+            </div>
+
+            <div id="verify-buttons">
+                <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" onclick="verifyInfo()">确定</a>
+                <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" onclick="$('#verify').dialog('close')">取消</a>
+            </div>
+            <div id="dlg-buttons">
+                <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" onclick="saveData()">保存</a>
+                <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" onclick="$('#dlg').dialog('close')">关闭</a>
+            </div>
+        </div>
+
+</body>
+</html>

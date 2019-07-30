@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.bjut.ssh.entity.Customer" table="customer" schema="material">
+        <id name="customerId" column="CustomerID"/>
+        <property name="companyName" column="CompanyName"/>
+        <property name="address" column="Address"/>
+        <property name="trustId" column="TrustID"/>
+        <property name="bankName" column="BankName"/>
+        <property name="accountNo" column="AccountNo"/>
+        <property name="phoneNo" column="PhoneNo"/>
+        <property name="mobileNo" column="MobileNo"/>
+        <property name="regCapital" column="RegCapital"/>
+        <property name="legalRep" column="LegalRep"/>
+    </class>
+</hibernate-mapping>

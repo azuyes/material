@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.bjut.ssh.entity.Materialstockin" table="materialstockin" schema="material">
+        <id name="id">
+            <column name="ID" sql-type="varchar(50)" length="50"/>
+        </id>
+        <property name="materialName">
+            <column name="MaterialName" sql-type="varchar(50)" length="50" not-null="true"/>
+        </property>
+        <property name="stockInDate">
+            <column name="StockInDate" sql-type="date" not-null="true"/>
+        </property>
+        <property name="stockInCode">
+            <column name="StockInCode" sql-type="varchar(12)" length="12" not-null="true"/>
+        </property>
+        <property name="planCode">
+            <column name="PlanCode" sql-type="varchar(12)" length="12" not-null="true"/>
+        </property>
+        <property name="examinationData">
+            <column name="ExaminationData" sql-type="date" not-null="true"/>
+        </property>
+        <property name="examinationPlace">
+            <column name="ExaminationPlace" sql-type="varchar(100)" length="100" not-null="true"/>
+        </property>
+        <property name="contractCode">
+            <column name="ContractCode" sql-type="varchar(50)" length="50" not-null="true"/>
+        </property>
+        <property name="materialApplication">
+            <column name="MaterialApplication" sql-type="varchar(50)" length="50" not-null="true"/>
+        </property>
+        <property name="specification2">
+            <column name="Specification2" sql-type="varchar(50)" length="50" not-null="true"/>
+        </property>
+        <property name="measureUnit2">
+            <column name="MeasureUnit2" sql-type="varchar(10)" length="10" not-null="true"/>
+        </property>
+        <property name="yssl">
+            <column name="YSSL" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="sssl">
+            <column name="SSSL" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="unitPrice">
+            <column name="UnitPrice" sql-type="float" precision="-1" not-null="true"/>
+        </property>
+        <property name="cost">
+            <column name="Cost" sql-type="float" precision="-1" not-null="true"/>
+        </property>
+        <property name="note2">
+            <column name="Note2" sql-type="varchar(100)" length="100" not-null="true"/>
+        </property>
+        <property name="guard">
+            <column name="Guard" sql-type="varchar(10)" length="10" not-null="true"/>
+        </property>
+        <property name="inspector">
+            <column name="Inspector" sql-type="varchar(10)" length="10" not-null="true"/>
+        </property>
+        <property name="salesMan">
+            <column name="SalesMan" sql-type="varchar(10)" length="10" not-null="true"/>
+        </property>
+        <property name="supplierUnit">
+            <column name="SupplierUnit" sql-type="varchar(100)" length="100" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>
