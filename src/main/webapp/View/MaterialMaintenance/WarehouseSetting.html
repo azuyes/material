@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../CSS/themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../CSS/themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../CSS/table.css" />
+    <script type="text/javascript" src="../JavaScript/jquery.min.js"></script>
+    <script type="text/javascript" src="../JavaScript/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../JavaScript/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../JavaScript/easyui-validatebox-extend.js"></script>
+    <script type="text/javascript" src="WarehouseSetting.js"></script>
+</head>
+
+<body class="easyui-layout">
+<div style="position:absolute;height:100%;width:100%;">
+    <table id="grid"  class="easyui-datagrid"  style="position:relative;width: 100%; height: 100%;"
+           idfield="itemid" pagination="false" data-options="iconCls:'icon-save',rownumbers:true,pageSize:5, pageList:[5,10,15,20],method:'get',toolbar:'#tb',striped:true" fitcolumns="true">
+    </table>
+    <div id="tb" style="padding: 5px; height: auto">
+        <a href="#" class="easyui-linkbutton" iconCls="icon-add" onclick="Add()">添加</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-edit" onclick="Edit()">修改</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-remove" onclick="Remove()">删除</a>
+    </div>
+</div>
+
+<div id="dlg" class="easyui-dialog" style="width: 400px; height: auto; padding: 10px 20px"
+     data-options="closed:true,buttons:'#dlg-buttons'">
+    <form id="fm" method="post">
+        <table padding="5">
+            <tr>
+                <td><label>库房编号：</label></td>
+                <td><input id="WarehouseCode" name="WarehouseCode" class="easyui-validatebox" data-options="required:true" maxlength="6" /></td>
+            </tr>
+            <tr>
+                <td><label>库房名称：</label></td>
+                <td><input id="WarehouseName" name="WarehouseName" class="easyui-validatebox" data-options="required:true" validtype="length[1,10]" invalidMessage="有效长度为1-10"/></td>
+            </tr>
+            <tr>
+                <td><label>部门名称：</label></td>
+                <td><input id="DepartmentName" name="DepartmentName" class="easyui-validatebox" data-options="required:true" validtype="length[1,6]" invalidMessage="有效长度为1-6"/></td>
+            </tr>
+            <tr>
+                <td><label>库房主管：</label></td>
+                <td>
+                    <select id="Inspector" name="Inspector" style='width:173px;' data-options="required:true"></select>
+                </td>
+            </tr>
+            <tr>
+                <td><label>保管员：</label></td>
+                <td>
+                    <select id="Guard" name="Guard" style='width:173px;' data-options="required:true"></select>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <div id="dlg-buttons">
+        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" onclick="saveData()">保存</a>
+        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" onclick="javascript:$('#dlg').dialog('close')">关闭</a>
+    </div>
+</div>
+<p id="text" hidden></p>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../CSS/themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../CSS/themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../CSS/table.css" />
+    <link rel="import" href="../CommonComponent/Dialog/DateSelect/DateSelectDialog.html" id="page">
+    <script type="text/javascript" src="../CommonComponent/Dialog/DateSelect/DateSelectDialog.js"></script>
+    <script type="text/javascript" src="../JavaScript/jquery.min.js"></script>
+    <script type="text/javascript" src="../JavaScript/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../JavaScript/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../JavaScript/easyui-validatebox-extend.js"></script>
+    <script type="text/javascript" src="PlanSubmit.js"></script>
+    <script type="text/javascript">
+        document.write(page.import.body.innerHTML);
+    </script>
+</head>
+<body>
+<div id="face" style="position:absolute;height:99%;width:99%;display:none;">
+    <div>
+        <a href="#" id="next" class="easyui-linkbutton" iconCls="icon-next" onclick="NextMaterial();">下一个物资</a>
+        <a href="#" id="submit" class="easyui-linkbutton" iconCls="icon-ok" onclick="Submit();">提交</a>
+    </div>
+    <div id="table_head" style="font-size: 14pt; text-align: center;">
+        <a>申请计划</a>
+    </div>
+    <div style="font-size: 10pt; float: left">
+        <a>日期:&nbsp&nbsp</a>
+        <a id="date"></a>
+    </div>
+    <div style="font-size: 10pt; float: right">
+        <a>计划编号:</a>
+        <a id="PlanID"></a>
+    </div>
+    <div id="ApplicationPlan">
+        <table id="table_Application" style="width: 100%; border: solid 1px #D5D5D5;">
+            <tr style="height: 60px">
+                <td style="font-size: 10pt; color: #000">物资编号</td>
+                <td>
+                    <input name="MaterialID" type="text" style="height: 25px; border: 1px solid #95B8E7; border-radius: 5px 5px 5px 5px" /></td>
+                <td style="font-size: 10pt; color: #000">物资类别编号</td>
+                <td>
+                    <input name="MaterialClassID" type="text" style="height: 25px; border: 1px solid #95B8E7; border-radius: 5px 5px 5px 5px" /></td>
+                <td style="font-size: 10pt; color: #000">物资名称</td>
+                <td>
+                    <textarea id="MaterialName" cols="20" rows="3" class="{maxlength:50}" style="height: 25px; width: 140px; border: 1px solid #95B8E7; border-radius: 5px 5px 5px 5px"></textarea>
+                </td>
+            </tr>
+            <tr style="height: 60px">
+                <td style="font-size: 10pt; color: #000">规格型号</td>
+                <td>
+                    <textarea id="Specification" cols="20" rows="3" class="{maxlength:50}" style="height: 25px; width: 140px; border: 1px solid #95B8E7; border-radius: 5px 5px 5px 5px"></textarea>
+                </td>
+                <td style="font-size: 10pt; color: #000">计量单位</td>
+                <td>
+                    <input name="MeasureUnit" type="text" style="height: 25px; border: 1px solid #95B8E7; border-radius: 5px 5px 5px 5px" /></td>
+                <td style="font-size: 10pt; color: #000">单价</td>
+                <td>
+                    <input name="UnitPrice" type="text" class="{number:true}" style="height: 25px; border: 1px solid #95B8E7; border-radius: 5px 5px 5px 5px" /></td>
+            </tr>
+            <tr style="height: 60px">
+                <td style="font-size: 10pt; color: #000">物料组</td>
+                <td>
+                    <input name="MaterialGroup" type="text" class="{maxlength:20}" style="height: 25px; border: 1px solid #95B8E7; border-radius: 5px 5px 5px 5px" /></td>
+                <td style="font-size: 10pt; color: #000">数量</td>
+                <td>
+                    <input name="Quantity" class="{number:true}" type="text" style="height: 25px; border: 1px solid #95B8E7; border-radius: 5px 5px 5px 5px" /></td>
+                <td style="font-size: 10pt; color: #000">质量技术标准</td>
+                <td>
+                    <textarea id="ZLJSBZ" cols="20" rows="3" class="{maxlength:50}" style="height: 25px; width: 140px; border: 1px solid #95B8E7; border-radius: 5px 5px 5px 5px"></textarea>
+                </td>
+            </tr>
+            <tr style="height: 60px">
+
+                <td style="font-size: 10pt; color: #000">供应商</td>
+                <td>
+                    <textarea id="Provider" cols="20" rows="3" class="{maxlength:50}" style="height: 25px; width: 140px; border: 1px solid #95B8E7; border-radius: 5px 5px 5px 5px"></textarea>
+                </td>
+                <td style="font-size: 10pt; color: #000">交货时间</td>
+                <td>
+                    <input name="DeliveryDate" id="DeliveryDate" type="text" class="easyui-datebox" editable="false" /></td>
+                <td style="font-size: 10pt; color: #000">备注</td>
+                <td>
+                    <textarea id="Note" cols="20" rows="3" class="{maxlength:100}" style="height: 25px; width: 140px; border: 1px solid #95B8E7; border-radius: 5px 5px 5px 5px"></textarea>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div style="font-size: 10pt; float: right">
+        <a>稽核员:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+    </div>
+    <div style="font-size: 10pt; float: left">
+        <a>申请部门编号：</a>
+        <a id="DepartmentID"></a>
+        <a>&nbsp&nbsp&nbsp申请部门：</a>
+        <a id="DepartmentName"></a>
+        <a>&nbsp&nbsp&nbsp申请人：</a>
+        <a id="Applicant"></a>
+    </div>
+    <div style="clear: both;">
+        <input id="chk_PlanSearch" type="checkbox" onclick="Show();"/>
+        <a style="color: #0E2D5F; font-family: 楷体; font-size: 15px;">查看当前计划的保存明细</a>
+    </div>
+    <div id="plan" style="position:absolute;height:50%;width:100%;display:none;">
+        <table id="grid" class="easyui-datagrid"  style="position:relative;width: 100%; height: 100%;"
+           idfield="itemid" pagination="false" data-options="iconCls:'icon-save',rownumbers:true,pageSize:5, pageList:[5,10,15,20],method:'get',toolbar:'#tb',striped:true" fitcolumns="true">
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
