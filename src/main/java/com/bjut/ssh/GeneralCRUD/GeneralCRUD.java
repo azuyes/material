@@ -89,6 +89,14 @@ public class GeneralCRUD {//extends HibernateDaoSupport {
 
     }
 
+    /**
+     * 通用条件查询功能，只能有一个查询条件，比如where userNo = xxx
+     * @param entity
+     * @param property
+     * @param value
+     * @param <T>
+     * @return
+     */
     public <T> List<T> queryByProperty(String entity,String property,String value){
         String path=this.entityPath+""+entity;
         List<T> list=null;
@@ -106,6 +114,12 @@ public class GeneralCRUD {//extends HibernateDaoSupport {
 
     }
 
+    /**
+     * 通用的条件查询，当条件比较复杂时，需自己写HQL查询语句
+     * @param Hql
+     * @param <T>
+     * @return
+     */
     public <T> List<T> queryByHql(String Hql){
         List<T> list=null;
         Session session=this.sessionFactory.openSession();

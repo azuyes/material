@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../../../JavaScript/jquery.min.js"></script>
+    <script type="text/javascript" src="DateSelectDialog.js"></script>
+</head>
+<body>
+<!--日期选择对话框-->
+    <div id="dlg" class="easyui-dialog" style="width: 400px; height: auto; padding: 10px 20px"
+     data-options="closed:false,buttons:'#dlg-buttons'"><label style="font-size: 13px">申请日期：</label>
+    <input id="year_Input" type="number" style="width: 50px" max="" />
+    <label>年</label>
+    <input id="month_Input" type="number" style="width: 50px" min="1" max="12" />
+    <label>月</label>
+    <div>
+        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" onclick="Enter();">确定</a>
+    </div>
+    </div>
+</body>
+</html>
